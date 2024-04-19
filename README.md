@@ -1,5 +1,7 @@
 # Setup Sequencer Node With docker-compose
 
+**Recommend using Kubernetes instead**
+
 # Prerequisite
 
 **You must have enough AWS and Linux operation experience to make sure your sequencer reliable and stable.**
@@ -262,10 +264,10 @@ https://docs.docker.com/engine/install/
 
 ```yaml
 sequencer:
-  your_node_name:
+  your_sequencer_name:
     l1dtl: "http://the-l1dtl-private-ip:7878"
-    themis: "http://the-themis-private-ip:1317"
     l2geth: "http://the-l2geth-private-ip:8545"
+    themis: "http://the-themis-private-ip:1317"
 ```
 
 4. Login to the instance
