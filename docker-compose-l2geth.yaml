@@ -1,0 +1,54 @@
+name: "metis-sequencer"
+
+services:
+  l1dtl:
+    image: metisdao/dtl:v0.1.2
+    platform: linux/amd64
+    stop_grace_period: 30s
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - /data /metis/l1dtl:/data
+    env_file:
+      - l1dtl.env
+      - .env
+    healthcheck:
+      test:
+        ["CMD-SHELL", "curl --fail http://127.0.0.1:7878/eth/context/latest"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
+
+  l2geth:
+    image: metisdao/l2geth:v0.1.6
+    platform: linux/amd64
+    restart: unless-stopped
+    stop_grace_period: 30s
+    network_mode: host
+    command:
+      - --txpool.lifetime=10m
+      - --txpool.journal=/tmp/txpool.rlp
+    env_file:
+      - l2geth.env
+      - .env
+    depends_on:
+      l1dtl:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "is-l2geth-stalled", "-txpool"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    volumes:
+      - /data/metis/l2geth:/root/.ethereum
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"

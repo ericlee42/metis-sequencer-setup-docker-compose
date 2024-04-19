@@ -1,0 +1,20 @@
+name: "metis-sequencer"
+
+services:
+  exporter:
+    image: metisdao/sequencer-exporter:main
+    pull_policy: always
+    platform: linux/amd64
+    restart: unless-stopped
+    stop_grace_period: 30s
+    network_mode: host
+    command:
+      - -config
+      - /config.json
+    volumes:
+      - ./config.json:/config.json:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"

@@ -1,0 +1,46 @@
+name: "metis-sequencer"
+
+services:
+  themis:
+    container_name: themis
+    image: metisdao/themis:v0.1.2
+    restart: unless-stopped
+    network_mode: host
+    stop_grace_period: 2m
+    env_file:
+      - node.env
+    volumes:
+      - /data/themis:/var/lib/themis
+    command:
+      - start
+      - --rest-server=true
+      - --p2p.laddr=tcp://0.0.0.0:26656
+      - --rpc.laddr=tcp://0.0.0.0:26657
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
+
+  bridge:
+    image: metisdao/themis:v0.1.2
+    container_name: bridge
+    network_mode: host
+    restart: unless-stopped
+    stop_grace_period: 30s
+    depends_on:
+      - themis
+    env_file:
+      - bridge.env
+    volumes:
+      - /data/themis:/var/lib/themis
+    command:
+      - bridge
+      - start
+      - --all
+      - --node=tcp://localhost:26657
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
