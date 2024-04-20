@@ -10,9 +10,9 @@ services:
     network_mode: host
     command:
       - -config
-      - /config.json
+      - /config.yaml
     volumes:
-      - ./config.json:/config.json:ro
+      - ./config.yaml:/config.yaml:ro
     logging:
       driver: "json-file"
       options:
