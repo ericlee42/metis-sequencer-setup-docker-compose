@@ -117,6 +117,8 @@ mv docker-compose-l2geth.yaml docker-compose.yaml
 docker compose up -d
 ```
 
+Note: the healthcheck is not the same between the testnet and the mainnet, check out the healthcheck filed in the docker-compose file for the details.
+
 7. Add `docker-autoheal` service
 
 Run following command on the instance
