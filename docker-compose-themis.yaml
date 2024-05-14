@@ -3,7 +3,7 @@ name: "metis-sequencer"
 services:
   themis:
     container_name: themis
-    image: metisdao/themis:v0.1.2
+    image: metisdao/themis:v0.1.3
     restart: unless-stopped
     network_mode: host
     stop_grace_period: 2m
@@ -23,7 +23,7 @@ services:
         max-file: "10"
 
   bridge:
-    image: metisdao/themis:v0.1.2
+    image: metisdao/themis:v0.1.3
     container_name: bridge
     network_mode: host
     restart: unless-stopped
