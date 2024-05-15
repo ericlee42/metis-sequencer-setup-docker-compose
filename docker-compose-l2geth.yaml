@@ -40,10 +40,7 @@ services:
       l1dtl:
         condition: service_healthy
     healthcheck:
-      # for testnet
-      # test: ["CMD", "is-l2geth-stalled", "-txpool"]
-      # for mainnet
-      test: ["CMD", "is-l2geth-stalled", "-duration=30s", "-txpool"]
+      test: ["CMD", "is-l2geth-stalled", "-duration=1m", "-txpool"]
       interval: 10s
       timeout: 5s
       retries: 3
