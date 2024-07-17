@@ -25,14 +25,13 @@ services:
         max-file: "10"
 
   l2geth:
-    image: metisdao/l2geth:v0.3.0
+    image: metisdao/l2geth:v0.3.1
     platform: linux/amd64
     restart: unless-stopped
     stop_grace_period: 30s
     network_mode: host
     command:
       - --txpool.lifetime=10m
-      - --txpool.journal=/tmp/txpool.rlp
     env_file:
       - l2geth.env
       - .env
