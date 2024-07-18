@@ -39,7 +39,7 @@ services:
       l1dtl:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "is-l2geth-stalled", "-duration=1m", "-txpool"]
+      test: ["CMD", "is-l2geth-stalled", "-txpool"]
       interval: 10s
       timeout: 5s
       retries: 3
