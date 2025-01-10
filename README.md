@@ -63,7 +63,7 @@ Make a pull request and wait for it to merge
 
 System Requirements
 
-- c5.2xlarge, the root volume has 40Gi space at least
+- c5.4xlarge, the root volume has 40Gi space at least
 - ebs gp3, 3000 iops, 200 MB/s throughput(**IMPORTANT**), 750Gi size, mount the volume to `/data` path
 - request an EIP and associate it to the instance
 - add following security group rules
@@ -161,8 +161,8 @@ if the `.result.syncing` is false, your l2geth is syncd
 
 System Requirements
 
-- c5.2xlarge, the root volume has 200Gi space at least
-- ebs gp3, 3000 iops, 100Gi size, mount the volume to `/data` path
+- c5.2xlarge, the root volume has 40Gi space at least
+- ebs gp3, 3000 iops, 300Gi size, mount the volume to `/data` path
 - request an EIP and associate it to the instance
 - add following security group rules
 
