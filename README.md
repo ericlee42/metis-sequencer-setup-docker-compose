@@ -89,12 +89,13 @@ Add following environment values to `.env` file
 
 5.1 your Ethereum rpc endpoint, and the rpc node must have entie transaction and event logs
 
-for metis-sepolia, it's the sepolia rpc endpoint
+for metis-sepolia, it's the sepolia rpc endpoint and its beacon chain endpoint
 
-for metis-andromeda, it's the mainnet rpc endpoint
+for metis-andromeda, it's the mainnet jsonrpc and its beacon chain endpoint
 
 ```
 DATA_TRANSPORT_LAYER__L1_RPC_ENDPOINT=
+DATA_TRANSPORT_LAYER__L1_BEACON_ENDPOINT=
 ```
 
 5.2 your sequencer private key
