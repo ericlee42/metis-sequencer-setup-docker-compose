@@ -2,8 +2,7 @@ name: "metis-sequencer"
 
 services:
   exporter:
-    image: metisdao/sequencer-exporter:main
-    pull_policy: always
+    image: metisdao/sequencer-exporter:v0.0.4
     platform: linux/amd64
     restart: unless-stopped
     stop_grace_period: 30s
